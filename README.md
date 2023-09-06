@@ -31,13 +31,17 @@ Instructions
 	    	  This allows you to place the robot onto the table, which defaults to 5x5.
 		  x and y can each take a value between 0 and 4 inclusive.
 		  The direction can only be NORTH, EAST, SOUTH, or WEST
-            MOVE
+
+	    MOVE
 		This moves the robot one position in the direction it is currently facing.
 		If such a move would cause the robot to fall off the table, the move is ignored.
+
 	    LEFT
 		This turns the robot 90 degrees to the left
+
 	    RIGHT
 		This turns the robot 90 degrees to the right
+
 	    REPORT
 	        This displays the current position of the robot or "MISSING" if it isn't on the table.
 		
