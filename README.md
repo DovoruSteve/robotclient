@@ -7,13 +7,18 @@ This provides a command line interface to place and move the robot.
 
 Installation
 
-	Java 17 or newer to compile and / or run the robot client
+	The robotserver project is required to be installed and running first. It is at
+	    https://github.com/DovoruSteve/robotserver.git
+	    
+	Java 17 or newer is required to compile and / or run the robot client.
 
-	Maven 3 or newer if you want to recompile it and run the unit tests
+	Maven 3 or newer is required only if you want to recompile and run the unit tests.
 
-	Download / clone the repo. I've included the jar so you can run it without rebuilding it
+	Download / clone the repo. I've included the jar so you can run it without rebuilding it.
 
-	Once downloaded, run it by changing into the robotserver directory and running 
+	Once downloaded (and extracted, if you downloaded the zip), make sure the robot server
+	is running, and in a shell (or command window on Windows), run it by changing into
+	the robotclient directory and running 
 
 	     java -jar target/robotclient-0.0.1.jar
 
