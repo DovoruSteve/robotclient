@@ -1,0 +1,7 @@
+au/com/dovoru/robotclient/PlacementRequest.class
+au/com/dovoru/robotclient/GenericRestClient.class
+au/com/dovoru/robotclient/RobotClientApplication.class
+au/com/dovoru/robotclient/RobotResponse.class
+au/com/dovoru/robotclient/RobotClientApplication$Command.class
+au/com/dovoru/robotclient/RobotClientApplication$1.class
+au/com/dovoru/robotclient/Direction.class
