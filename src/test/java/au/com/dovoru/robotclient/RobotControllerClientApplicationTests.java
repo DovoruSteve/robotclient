@@ -12,14 +12,15 @@ class RobotControllerClientApplicationTests {
 	private GenericRestClient genericClient;
 	
 	private String restURI = "http://localhost:8080";
-	
+	private String username = "kizzie";    // TODO: Get these from the ConfigServer's robotserver.properties file in the protected directory
+	private String password = "HappyHippo";
 	/**
 	 * Confirm placing the robot on the table works
 	 */
 	@Test
 	void givenPlacement_whenPlacementOnTable_thenReturnRobot() {
 		PlacementRequest placementRequest = new PlacementRequest(0,0,Direction.NORTH);
-		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, RobotResponse.class);
+		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, username, password, RobotResponse.class);
 		Assertions.assertEquals(false,robotResponse.isLost());
 		Assertions.assertEquals(0,robotResponse.getX());
 		Assertions.assertEquals(0,robotResponse.getY());
@@ -32,7 +33,7 @@ class RobotControllerClientApplicationTests {
 	void givenPlacement_whenPlacementOffTable_thenExpectException() {
 		WebClientResponseException thrown = Assertions.assertThrows(WebClientResponseException.class, () -> {
 			PlacementRequest placementRequest = new PlacementRequest(-1,0,Direction.NORTH);
-			genericClient.post(restURI+"/place", placementRequest, RobotResponse.class);
+			genericClient.post(restURI+"/place", placementRequest, username, password, RobotResponse.class);
 		}, "WebClientResponseException was expected");
 		
 		Assertions.assertEquals("400 Bad Request from POST "+restURI+"/place", thrown.getMessage());
@@ -43,8 +44,8 @@ class RobotControllerClientApplicationTests {
 	@Test
 	void givenPlacementAndMove_whenStillOnTable_thenReturnRobot() {
 		PlacementRequest placementRequest = new PlacementRequest(0,0,Direction.NORTH);
-		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, RobotResponse.class);
-		robotResponse = genericClient.put(restURI+"/move", null, RobotResponse.class);
+		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, username, password, RobotResponse.class);
+		robotResponse = genericClient.put(restURI+"/move", null, username, password, RobotResponse.class);
 		Assertions.assertEquals(false,robotResponse.isLost());
 		Assertions.assertEquals(0,robotResponse.getX());
 		Assertions.assertEquals(1,robotResponse.getY());
@@ -56,8 +57,8 @@ class RobotControllerClientApplicationTests {
 	@Test
 	void givenPlacementAndMove_whenMovingOffTheTable_thenIgnoreMove() {
 		PlacementRequest placementRequest = new PlacementRequest(0,0,Direction.SOUTH);
-		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, RobotResponse.class);
-		robotResponse = genericClient.put(restURI+"/move", null, RobotResponse.class);
+		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, username, password, RobotResponse.class);
+		robotResponse = genericClient.put(restURI+"/move", null, username, password, RobotResponse.class);
 		Assertions.assertEquals(false,robotResponse.isLost());
 		Assertions.assertEquals(0,robotResponse.getX());
 		Assertions.assertEquals(0,robotResponse.getY());
@@ -69,8 +70,8 @@ class RobotControllerClientApplicationTests {
 	@Test
 	void givenPlacementAndLeft_whenPlacementOnTable_thenRobotHasTurnedLeftOnePDirection() {
 		PlacementRequest placementRequest = new PlacementRequest(0,0,Direction.NORTH);
-		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, RobotResponse.class);
-		robotResponse = genericClient.put(restURI+"/left", null, RobotResponse.class);
+		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, username, password, RobotResponse.class);
+		robotResponse = genericClient.put(restURI+"/left", null, username, password, RobotResponse.class);
 		Assertions.assertEquals(false,robotResponse.isLost());
 		Assertions.assertEquals(0,robotResponse.getX());
 		Assertions.assertEquals(0,robotResponse.getY());
@@ -82,8 +83,8 @@ class RobotControllerClientApplicationTests {
 	@Test
 	void givenPlacementAndRight_whenPlacementOnTable_thenRobotHasTurnedRightOnePDirection() {
 		PlacementRequest placementRequest = new PlacementRequest(0,0,Direction.NORTH);
-		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, RobotResponse.class);
-		robotResponse = genericClient.put(restURI+"/right", null, RobotResponse.class);
+		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, username, password, RobotResponse.class);
+		robotResponse = genericClient.put(restURI+"/right", null, username, password, RobotResponse.class);
 		Assertions.assertEquals(false,robotResponse.isLost());
 		Assertions.assertEquals(0,robotResponse.getX());
 		Assertions.assertEquals(0,robotResponse.getY());
@@ -95,13 +96,12 @@ class RobotControllerClientApplicationTests {
 	@Test
 	void givenPlacementAndReport_whenPlacementOnTable_thenRobotHasReportedCorrectly() {
 		PlacementRequest placementRequest = new PlacementRequest(3,3,Direction.NORTH);
-		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, RobotResponse.class);
-		robotResponse = genericClient.get(restURI+"/report", RobotResponse.class);
+		RobotResponse robotResponse = genericClient.post(restURI+"/place", placementRequest, username, password, RobotResponse.class);
+		robotResponse = genericClient.get(restURI+"/report", username, password, RobotResponse.class);
 		Assertions.assertEquals(false,robotResponse.isLost());
 		Assertions.assertEquals(3,robotResponse.getX());
 		Assertions.assertEquals(3,robotResponse.getY());
 		Assertions.assertEquals(Direction.NORTH,robotResponse.getFacing());
 		Assertions.assertEquals("3,3,NORTH",robotResponse.report());
 	}
-
 }

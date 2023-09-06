@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: au.com.dovoru.robotclient.RobotControllerClientApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.303 s - in au.com.dovoru.robotclient.RobotControllerClientApplicationTests
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.47 s - in au.com.dovoru.robotclient.RobotControllerClientApplicationTests
