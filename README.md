@@ -1,15 +1,25 @@
 # robotclient
+
 Robot Client for the Coding Challenge 1
+
+
 This provides a command line interface to place and move the robot.
 
 Installation
+
 	Java 17 or newer to compile and / or run the robot client
+
 	Maven 3 or newer if you want to recompile it and run the unit tests
+
 	Download / clone the repo. I've included the jar so you can run it without rebuilding it
+
 	Once downloaded, run it with
+
 	     java -jar target/robotclient-0.0.1.jar
 
+
 Instructions
+
 	This is a console application. The following commands are acceptable.
 
 	    PLACE x,y,direction
@@ -26,13 +36,19 @@ Instructions
 	    REPORT
 	        This displays the current position of the robot or "MISSING" if it isn't on the table.
 		
+
 Assumptions
+
 	The only time the Robot is “MISSING” is from when the REST server is started up until a valid PLACE
 	command is entered. Once it is on the table, it is not possible for it to leave the table until the
 	server is restarted.
 
+
 Included
+
 	Unit Tests for the client 
 
+
 Not included / Out of Scope
+
 	The robot is not persisted across server restarts. 
