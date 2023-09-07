@@ -51,7 +51,7 @@ public class RobotClientApplication implements ApplicationRunner {
 			String commands = console.readLine("Enter commands: ");
 			StringTokenizer tokenizer = new StringTokenizer(commands);
 		    while (tokenizer.hasMoreTokens()) {
-		    	String token = tokenizer.nextToken();
+		    	String token = tokenizer.nextToken().toUpperCase();
 		    	Command command = null;
 		    	try {
 			    	command = Command.valueOf(token);
@@ -108,7 +108,7 @@ public class RobotClientApplication implements ApplicationRunner {
 			System.out.println(Command.PLACE+" requires 3 comma separated parameters, an x coordinate, a y coordinate, and a direction, but none were given -- ignoring command and attempting to continue");
 			return null;
 		}
-		String placeParams = tokenizer.nextToken();
+		String placeParams = tokenizer.nextToken().toUpperCase();
 		String[] placeParamsArray = placeParams.split(",");
 		if (placeParamsArray.length != 3) {
 			System.out.println(Command.PLACE+" requires 3 comma separated parameters, an x coordinate, a y coordinate, and a direction, but I was given '"+placeParams+"'  -- ignoring command and attempting to continue");
