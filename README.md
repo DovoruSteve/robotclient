@@ -64,7 +64,7 @@ Not included / Out of Scope
 
 	The robot is not persisted across server restarts. 
 
-	Change History
+Change History
 
 		v0.0.2 Gets username and password from config rather than hard coded 
 				Exclude useless json library when running tests (just to hide the warning)
