@@ -67,6 +67,8 @@ Not included / Out of Scope
 	Change History
 
 		v0.0.2 Gets username and password from config rather than hard coded 
-				Exclude useless json library when running tests (just to hide the warning) 
+				Exclude useless json library when running tests (just to hide the warning)
+				Now relies on robotclient.properties from the confg server to get username and password 
+				for the API 
 		v0.0.1 Initial version 
 	
