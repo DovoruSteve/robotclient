@@ -3,6 +3,7 @@ package au.com.dovoru.robotclient;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
@@ -10,10 +11,13 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 class RobotControllerClientApplicationTests {
 	@Autowired
 	private GenericRestClient genericClient;
-	
-	private String restURI = "http://localhost:8080";
-	private String username = "kizzie";    // TODO: Get these from the ConfigServer's robotserver.properties file in the protected directory
-	private String password = "HappyHippo";
+	@Value("${restURI}")
+	private String restURI;
+	@Value("${username}")
+	private String username;
+	@Value("${password}")
+	private String password;
+
 	/**
 	 * Confirm placing the robot on the table works
 	 */

@@ -5,6 +5,7 @@ import java.util.StringTokenizer;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,10 +29,12 @@ public class RobotClientApplication implements ApplicationRunner {
 
 	@Autowired
 	private GenericRestClient genericClient;
-
-	private String restURI = "http://localhost:8080";
-	private String username = "kizzie";		// TODO: Get these from the ConfigServer's robotserver.properties file in the protected directory
-	private String password = "HappyHippo";
+	@Value("${restURI}")
+	private String restURI;
+	@Value("${username}")
+	private String username;
+	@Value("${password}")
+	private String password;
 	enum Command {
 		PLACE,
 		MOVE,
@@ -50,7 +53,7 @@ public class RobotClientApplication implements ApplicationRunner {
 		while (true) {
 			String commands = console.readLine("Enter commands: ");
 			StringTokenizer tokenizer = new StringTokenizer(commands);
-		    while (tokenizer.hasMoreTokens()) {
+			while (tokenizer.hasMoreTokens()) {
 		    	String token = tokenizer.nextToken().toUpperCase();
 		    	Command command = null;
 		    	try {

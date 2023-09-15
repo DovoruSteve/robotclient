@@ -7,7 +7,9 @@ This provides a command line interface to place and move the robot.
 
 Installation
 
-	The robotserver project is required to be installed and running first. It is at
+	The config project and robotserver project are required to be installed and running first.
+	They are at the following URL's
+	    https://github.com/DovoruSteve/config.git
 	    https://github.com/DovoruSteve/robotserver.git
 	    
 	Java 17 or newer is required to compile and / or run the robot client.
@@ -16,11 +18,11 @@ Installation
 
 	Download / clone the repo. I've included the jar so you can run it without rebuilding it.
 
-	Once downloaded (and extracted, if you downloaded the zip), make sure the robot server
-	is running, and in a shell (or command window on Windows), run it by changing into
-	the robotclient directory and running 
+	Once downloaded (and extracted, if you downloaded the zip), make sure the config server
+	and the robot server are running, and then in a shell (or command window on Windows), 
+	run it by changing into the robotclient directory and running 
 
-	     java -jar target/robotclient-0.0.1.jar
+	     java -jar target/robotclient-0.0.2.jar
 
 
 Instructions
@@ -61,3 +63,10 @@ Included
 Not included / Out of Scope
 
 	The robot is not persisted across server restarts. 
+
+	Change History
+
+		v0.0.2 Gets username and password from config rather than hard coded 
+				Exclude useless json library when running tests (just to hide the warning) 
+		v0.0.1 Initial version 
+	
